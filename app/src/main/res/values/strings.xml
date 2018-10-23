@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">OffTrial</string>
+    <string name="msg_splash">Carregando...</string>
+    <string name="edt_login">Entre com o Login</string>
+    <string name="edt_senha">Entre com a Senha</string>
+    <string name="btn_sair">Sair</string>
+    <string name="btn_login">Login</string>
+    <string name="title_activity_principal">OffTrial</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+</resources>
