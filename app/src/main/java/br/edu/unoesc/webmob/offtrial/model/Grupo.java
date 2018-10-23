@@ -6,27 +6,28 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable
 public class Grupo {
 
-    @DatabaseField(generatedId = true)
-    private Integer codigo;
-    @DatabaseField(canBeNull = false)
-    private String nome;
-    @DatabaseField(foreign = true, foreignColumnName = "codigo")
+    @DatabaseField(generatedId = true, width = 10)
+    private Integer codGrp;
+    @DatabaseField(canBeNull = false, width = 40)
+    private String nomGrp;
+    @DatabaseField(foreign = true, foreignColumnName = "codCid")
     private Cidade cidade;
 
-    public Integer getCodigo() {
-        return codigo;
+    public Integer getCodGrp()
+    {
+        return codGrp;
     }
 
-    public void setCodigo(Integer codigo) {
-        this.codigo = codigo;
+    public void setCodGrp(Integer codigo) {
+        this.codGrp = codigo;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomGrp() {
+        return nomGrp;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomGrp(String nomGrp) {
+        this.nomGrp = nomGrp;
     }
 
     public Cidade getCidade() {

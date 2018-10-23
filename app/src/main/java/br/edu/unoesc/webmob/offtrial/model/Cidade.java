@@ -6,25 +6,25 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable
 public class Cidade {
 
-    @DatabaseField(generatedId = true)
-    private Integer codigo;
-    @DatabaseField(canBeNull = false)
-    private String nome;
+    @DatabaseField(generatedId = true, width = 10)
+    private Integer codCid;
+    @DatabaseField(canBeNull = false, width = 40)
+    private String nomCid;
 
-    public Integer getCodigo() {
-        return codigo;
+    public Integer getCodCid() {
+        return codCid;
     }
 
-    public void setCodigo(Integer codigo) {
-        this.codigo = codigo;
+    public void setCodCid(Integer codCid) {
+        this.codCid = codCid;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomCid() {
+        return nomCid;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomCid(String nomCid) {
+        this.nomCid = nomCid;
     }
 
     public Cidade() {}
