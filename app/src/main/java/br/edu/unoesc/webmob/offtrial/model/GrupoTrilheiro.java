@@ -15,7 +15,7 @@ public class GrupoTrilheiro {
     @DatabaseField(foreign = true, foreignColumnName = "codTri")
     private Trilheiro codTri;
     @DatabaseField
-    private Date date;
+    private Date dataCadastro;
 
     public Integer getCodGri() {
         return codGri;
@@ -41,12 +41,12 @@ public class GrupoTrilheiro {
         this.codTri = codTri;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getDataCadastro() {
+        return dataCadastro;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDataCadastro(Date dataCadastro) {
+        this.dataCadastro = dataCadastro;
     }
 
     public GrupoTrilheiro() {}

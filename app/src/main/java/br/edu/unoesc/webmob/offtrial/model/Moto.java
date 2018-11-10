@@ -58,4 +58,9 @@ public class Moto {
     }
 
     public Moto() {}
+
+    @Override
+    public String toString() {
+        return getDesMod() + " - " + getCinMot();
+    }
 }

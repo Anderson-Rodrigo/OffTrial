@@ -1,6 +1,7 @@
 package br.edu.unoesc.webmob.offtrial.ui;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.view.View;
@@ -22,6 +23,7 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Fullscreen;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.WindowFeature;
+import org.androidannotations.annotations.sharedpreferences.Pref;
 
 import br.edu.unoesc.webmob.offtrial.R;
 import br.edu.unoesc.webmob.offtrial.adapter.TrilheiroAdapter;
@@ -36,6 +38,8 @@ public class PrincipalActivity extends AppCompatActivity implements NavigationVi
     ListView lstTrilheiros;
     @Bean
     TrilheiroAdapter trilheiroAdapter;
+    @Pref
+    Configuracao_ configuracao;
 
     @AfterViews
     public void inicializar() {
@@ -66,6 +70,10 @@ public class PrincipalActivity extends AppCompatActivity implements NavigationVi
         Usuario u = (Usuario)getIntent().getSerializableExtra("usuario");
         Toast.makeText(this, "Seja bem vindo! - " + u.getSenUsu(), Toast.LENGTH_LONG).show();
 
+        View v = toolbar.getRootView();
+        v.setBackgroundColor(configuracao.cor().get());
+        Toast.makeText(this, configuracao.parametro().get(), Toast.LENGTH_SHORT).show();
+        configuracao.edit().cor().put(Color.BLUE).apply();
     }
 
     @Override

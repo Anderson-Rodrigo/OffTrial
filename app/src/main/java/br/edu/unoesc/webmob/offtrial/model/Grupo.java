@@ -39,4 +39,9 @@ public class Grupo {
     }
 
     public Grupo() {}
+
+    @Override
+    public String toString() {
+        return getNomGrp();
+    }
 }
