@@ -1,5 +1,6 @@
 package br.edu.unoesc.webmob.offtrial.ui;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -18,16 +19,23 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Fullscreen;
+import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.WindowFeature;
 import org.androidannotations.annotations.sharedpreferences.Pref;
+import org.androidannotations.rest.spring.annotations.RestService;
+
+import java.util.List;
 
 import br.edu.unoesc.webmob.offtrial.R;
 import br.edu.unoesc.webmob.offtrial.adapter.TrilheiroAdapter;
 import br.edu.unoesc.webmob.offtrial.model.Usuario;
+import br.edu.unoesc.webmob.offtrial.rest.CidadeClient;
+import br.edu.unoesc.webmob.offtrial.rest.Endereco;
 
 @EActivity(R.layout.activity_principal)
 @Fullscreen
@@ -40,6 +48,12 @@ public class PrincipalActivity extends AppCompatActivity implements NavigationVi
     TrilheiroAdapter trilheiroAdapter;
     @Pref
     Configuracao_ configuracao;
+
+    //injecao do cliente rest
+    @RestService
+    CidadeClient cidadeCliente;
+
+    ProgressDialog pd;
 
     @AfterViews
     public void inicializar() {
@@ -70,10 +84,10 @@ public class PrincipalActivity extends AppCompatActivity implements NavigationVi
         Usuario u = (Usuario)getIntent().getSerializableExtra("usuario");
         Toast.makeText(this, "Seja bem vindo! - " + u.getSenUsu(), Toast.LENGTH_LONG).show();
 
-        View v = toolbar.getRootView();
-        v.setBackgroundColor(configuracao.cor().get());
-        Toast.makeText(this, configuracao.parametro().get(), Toast.LENGTH_SHORT).show();
-        configuracao.edit().cor().put(Color.BLUE).apply();
+        //View v = toolbar.getRootView();
+        //v.setBackgroundColor(configuracao.cor().get());
+        //Toast.makeText(this, configuracao.parametro().get(), Toast.LENGTH_SHORT).show();
+        //configuracao.edit().cor().put(Color.BLUE).apply();
     }
 
     @Override
@@ -124,22 +138,36 @@ public class PrincipalActivity extends AppCompatActivity implements NavigationVi
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_sincroniza) {
+            pd = new ProgressDialog(this);
+            pd.setCancelable(false);
+            pd.setTitle("Aguarde Consultando...");
+            pd.setIndeterminate(true);
+            pd.show();
+            consultarCidadePorNome();
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_preferencias) {
 
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @UiThread
+    public void mostrarResultado(String resultado){
+        Toast.makeText(this, resultado, Toast.LENGTH_LONG).show();
+    }
+
+    @Background(delay = 2000)
+    public void consultarCidadePorNome(){
+        pd.dismiss();
+        //aciona a lista
+        List<Endereco> e = cidadeCliente.getEndereco("Maravilha");
+
+        if (e != null && e.size() > 0){
+            mostrarResultado(e.get(0).toString());
+        }
     }
 }
