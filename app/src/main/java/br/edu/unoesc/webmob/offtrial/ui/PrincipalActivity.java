@@ -12,16 +12,33 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Bean;
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.Fullscreen;
+import org.androidannotations.annotations.ViewById;
+import org.androidannotations.annotations.WindowFeature;
 
 import br.edu.unoesc.webmob.offtrial.R;
+import br.edu.unoesc.webmob.offtrial.adapter.TrilheiroAdapter;
+import br.edu.unoesc.webmob.offtrial.model.Usuario;
 
-public class PrincipalActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+@EActivity(R.layout.activity_principal)
+@Fullscreen
+@WindowFeature(Window.FEATURE_NO_TITLE)
+public class PrincipalActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_principal);
+    @ViewById
+    ListView lstTrilheiros;
+    @Bean
+    TrilheiroAdapter trilheiroAdapter;
+
+    @AfterViews
+    public void inicializar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -32,7 +49,6 @@ public class PrincipalActivity extends AppCompatActivity
 
                 Intent intCadastroTrilheiros = new Intent(PrincipalActivity.this, CadastroTrilheirosActivity_.class);
                 startActivity(intCadastroTrilheiros);
-                finish();
             }
 
         });
@@ -45,6 +61,21 @@ public class PrincipalActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        //recuperar dados do usuario
+        Usuario u = (Usuario)getIntent().getSerializableExtra("usuario");
+        Toast.makeText(this, "Seja bem vindo! - " + u.getSenUsu(), Toast.LENGTH_LONG).show();
+
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        atualizaListaTrilheiros();
+    }
+
+    public void atualizaListaTrilheiros(){
+        lstTrilheiros.setAdapter(trilheiroAdapter);
     }
 
     @Override

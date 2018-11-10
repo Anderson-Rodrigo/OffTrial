@@ -47,8 +47,10 @@ public class LoginActivity extends AppCompatActivity {
 
             Usuario u = dh.validaLogin(strLogin, strSenha);
             if (u != null) {
-                Intent intPrincipal = new Intent(this, PrincipalActivity.class);
-
+                Intent intPrincipal = new Intent(this, PrincipalActivity_.class);
+                //passando parametro para outra tela
+                //utiliza hashmap
+                intPrincipal.putExtra("usuario", u);
                 startActivity(intPrincipal);
                 finish();
             }

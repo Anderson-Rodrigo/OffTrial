@@ -22,7 +22,7 @@
         </activity>
         <activity android:name="br.edu.unoesc.webmob.offtrial.ui.LoginActivity_" />
         <activity
-            android:name="br.edu.unoesc.webmob.offtrial.ui.PrincipalActivity"
+            android:name="br.edu.unoesc.webmob.offtrial.ui.PrincipalActivity_"
             android:label="@string/title_activity_principal"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name="br.edu.unoesc.webmob.offtrial.ui.CadastroTrilheirosActivity_"></activity>

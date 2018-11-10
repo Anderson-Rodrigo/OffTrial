@@ -23,8 +23,6 @@ public class CadastroTrilheirosActivity extends AppCompatActivity {
     EditText edtIdade;
 
     public void cancelar(View v){
-        Intent intPrincipal = new Intent(this, PrincipalActivity.class);
-        startActivity(intPrincipal);
         finish();
     }
 
