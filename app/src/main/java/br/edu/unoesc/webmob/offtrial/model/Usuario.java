@@ -1,7 +1,5 @@
 package br.edu.unoesc.webmob.offtrial.model;
 
-import android.support.annotation.Size;
-
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
@@ -38,4 +36,6 @@ public class Usuario {
     public void setSenUsu(String senUsu) {
         this.senUsu = senUsu;
     }
+
+    public Usuario() {}
 }

@@ -49,4 +49,6 @@ public class GrupoTrilheiro {
         this.date = date;
     }
 
+    public GrupoTrilheiro() {}
+
 }

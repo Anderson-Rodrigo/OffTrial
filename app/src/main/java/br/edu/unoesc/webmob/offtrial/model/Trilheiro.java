@@ -1,5 +1,6 @@
 package br.edu.unoesc.webmob.offtrial.model;
 
+import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
@@ -12,8 +13,10 @@ public class Trilheiro {
     private String nomTri;
     @DatabaseField(width = 10)
     private Integer idAtri;
-    @DatabaseField(foreign = true, foreignColumnName = "codMot")
+    @DatabaseField(foreign = true, foreignColumnName = "codMoto")
     private Moto codMot;
+    @DatabaseField(dataType = DataType.BYTE_ARRAY)
+    private byte[] foto;
 
     public Integer getCodTri() {
         return codTri;
@@ -46,4 +49,14 @@ public class Trilheiro {
     public void setCodMot(Moto codMot) {
         this.codMot = codMot;
     }
+
+    public byte[] getFoto() {
+        return foto;
+    }
+
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
+    }
+
+    public Trilheiro() {}
 }

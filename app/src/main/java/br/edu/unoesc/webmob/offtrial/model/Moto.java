@@ -56,4 +56,6 @@ public class Moto {
     public void setCorMot(String corMot) {
         this.corMot = corMot;
     }
+
+    public Moto() {}
 }

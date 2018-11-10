@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.edu.unoesc.webmob.offtrial">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/icone_offtrial"
@@ -9,19 +13,19 @@
         android:roundIcon="@mipmap/icone_offtrial"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.SplashActivity_">
+        <activity android:name="br.edu.unoesc.webmob.offtrial.ui.SplashActivity_">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.LoginActivity_" />
+        <activity android:name="br.edu.unoesc.webmob.offtrial.ui.LoginActivity_" />
         <activity
-            android:name=".ui.PrincipalActivity"
+            android:name="br.edu.unoesc.webmob.offtrial.ui.PrincipalActivity"
             android:label="@string/title_activity_principal"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ui.CadastroTrilheirosActivity_"></activity>
+        <activity android:name="br.edu.unoesc.webmob.offtrial.ui.CadastroTrilheirosActivity_"></activity>
     </application>
 
 </manifest>

@@ -37,4 +37,6 @@ public class Grupo {
     public void setCidade(Cidade cidade) {
         this.cidade = cidade;
     }
+
+    public Grupo() {}
 }

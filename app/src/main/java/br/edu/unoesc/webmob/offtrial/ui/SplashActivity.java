@@ -1,9 +1,7 @@
 package br.edu.unoesc.webmob.offtrial.ui;
 
 import android.content.Intent;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Window;
 
 import org.androidannotations.annotations.AfterViews;
@@ -18,6 +16,7 @@ import br.edu.unoesc.webmob.offtrial.R;
 @Fullscreen
 @WindowFeature(Window.FEATURE_NO_TITLE)
 public class SplashActivity extends AppCompatActivity {
+
 
     @AfterViews
     @Background(delay = 3000)
